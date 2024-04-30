@@ -11,7 +11,7 @@ User = get_user_model()
 
 class StaffLoginPage(View):
     def get(self, request):
-        return render(request, "web/authentication/login.html")
+        return render(request, "web/authentication/staff_login.html")
     
     def post(self, request):
         email = request.POST['email']
@@ -71,7 +71,7 @@ class SignUpPage(View):
         
 class StaffSignUpPage(View):
     def get(self, request):
-        return render(request, "web/authentication/signup.html")
+        return render(request, "web/authentication/staff_signup.html")
     
     def post(self, request):
         username = request.POST['username']
