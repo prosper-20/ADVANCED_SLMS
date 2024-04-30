@@ -87,7 +87,7 @@ class StaffSignUpPage(View):
                 messages.info(request, "Username already exists")
                 return redirect(reverse('web-signup'))
             else:
-                User.objects.create_user(username=username, email=email, password=password)
+                User.objects.create_lecturer(username=username, email=email, password=password)
                 messages.info(request, "Account creation successful")
                 return redirect(reverse('web-login'))
         else:
