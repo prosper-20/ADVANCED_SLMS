@@ -8,7 +8,8 @@ from .managers import CustomUserManager
 
 TITLE = (
     ("Engr.", "Engr."),
-    ("Prof.", "Prof")
+    ("Prof.", "Prof"),
+    ("Dr.", "Dr.")
 )
 
 
