@@ -1,0 +1,62 @@
+[
+  {
+    "id": "fc56bc9c-dd69-41e2-a408-6a3d7cffdf2b",
+    "course_id": 3,
+    "slug": "engineering-economics-of-life-cycle-cost-analysis",
+    "title": "Engineering Economics of Life Cycle Cost Analysis",
+    "author": "John Vail Farr, Isaac J. Faber.",
+    "vote_count": 2311,
+    "vote_average": "4.0",
+    "published_date": "2023-02-14"
+  },
+  {
+    "id": "d17d7f68-91ed-44d7-b63c-5bf2c0d29343",
+    "course_id": 3,
+    "slug": "schaums-easy-outline-of-principles-of-economics",
+    "title": "Schaum's Easy Outline of Principles of Economics",
+    "author": "Dominick Salvatore, Eugene A. Diulio.",
+    "vote_count": 3456,
+    "vote_average": "4.0",
+    "published_date": "2003-09-26"
+  },
+  {
+    "id": "46a95b47-7e14-4154-8814-9247f5b00a39",
+    "course_id": 3,
+    "slug": "engineering-economics",
+    "title": "ENGINEERING ECONOMICS",
+    "author": "R. PANNEERSELVAM",
+    "vote_count": 4315,
+    "vote_average": "3.8",
+    "published_date": "2004-08-06"
+  },
+  {
+    "id": "33d80fcb-c1e1-4b1d-bfc1-d5185609b0df",
+    "course_id": 4,
+    "slug": "digital-computer-electronics",
+    "title": "Digital computer electronics",
+    "author": "Albert Paul Malvino",
+    "vote_count": 7372,
+    "vote_average": "4.8",
+    "published_date": "2002-03-30"
+  },
+  {
+    "id": "d484dcb5-fe71-4a7b-9d2c-3aa7d63fa972",
+    "course_id": 4,
+    "slug": "electronic-principles",
+    "title": "Electronic Principles",
+    "author": "Albert Paul Malvino and David J. Bates",
+    "vote_count": 3454,
+    "vote_average": "3.6",
+    "published_date": "2015-07-10"
+  },
+  {
+    "id": "6edf83b0-85fd-440e-a3cc-26097c24885f",
+    "course_id": 4,
+    "slug": "digital-fundamentals",
+    "title": "Digital Fundamentals",
+    "author": "Thomas L. Floyd",
+    "vote_count": 7862,
+    "vote_average": "4.0",
+    "published_date": "2005-02-22"
+  }
+]
