@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Login | SLMS</title>
+	<title>Sign Up | SLMS</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -35,15 +35,20 @@
 			<div class="wrap-login100">
 				<div class="login100-form-title" style="background-image: url(/static/web/authentication/images/bg-01.jpg);">
 					<span class="login100-form-title-1">
-						Staff Sign In
+						Sign Up
 					</span>
 				</div>
 
 				<form class="login100-form validate-form" method="post">
 					{% csrf_token %}
+                    <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
+						<span class="label-input100">Username </span>
+						<input class="input100" type="text" name="username" placeholder="user">
+						<span class="focus-input100"></span>
+					</div>
 					<div class="wrap-input100 validate-input m-b-26" data-validate="Email address is required">
 						<span class="label-input100">Email </span>
-						<input class="input100" type="text" name="email" placeholder="user@example.com">
+						<input class="input100" type="email" name="email" placeholder="user@example.com">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -52,25 +57,30 @@
 						<input class="input100" type="password" name="password" placeholder="Enter password">
 						<span class="focus-input100"></span>
 					</div>
+                    <div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
+						<span class="label-input100">Confirm Password</span>
+						<input class="input100" type="password" name="password2" placeholder="Enter password">
+						<span class="focus-input100"></span>
+					</div>
 
 					<div class="flex-sb-m w-full p-b-30">
-						<div class="contact100-form-checkbox">
+						<!-- <div class="contact100-form-checkbox">
 							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
 							<label class="label-checkbox100" for="ckb1">
 								Remember me
 							</label>
-						</div>
+						</div> -->
 
 						<div>
-							<a href="#" class="txt1">
-								Forgot Password?
+							<a href="{% url 'web-staff-login' %}" class="txt1">
+								Log in?
 							</a>
 						</div>
 					</div>
 
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit">
-							Login
+							Sign Up
 						</button>
 					</div>
 				</form>
