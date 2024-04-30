@@ -6,27 +6,16 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 @receiver(post_save, sender=Lecturer)
-def create_lecturer_profile(sender, created, instance, **kwargs):
+def create_profile(sender, created, instance, **kwargs):
     if created:
-        LecturerProfile.objects.create(user=instance)
-
-
-
-@receiver(post_save, sender=User)
-def create_student_profile(sender, created, instance, **kwargs):
-    if created:
-        LecturerProfile.objects.create(user=instance)
-
-
-@receiver(post_save, sender=Lecturer) 
-def save_lecturer_profile(sender, instance, **kwargs):
-        instance.profile.save()
+        User.objects.create(user=instance)
 
 
 
 @receiver(post_save, sender=User) 
-def save_student_profile(sender, instance, **kwargs):
+def save_lecturer_profile(sender, instance, **kwargs):
         instance.profile.save()
+
 
 
 
