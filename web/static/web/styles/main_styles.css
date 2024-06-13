@@ -1182,7 +1182,8 @@ section
 	font-size: 42px;
 	font-weight: 700;
 	line-height: 0.75;
-	color: #14bdee;
+	color: #000000;
+	/* color: #14bdee; */
 }
 .milestone_text
 {

@@ -34,11 +34,11 @@
 									<li><div class="question">Have any questions?</div></li>
 									<li>
 										<i class="fa fa-phone" aria-hidden="true"></i>
-										<div>001-1234-88888</div>
+										<div>234-12345678</div>
 									</li>
 									<li>
 										<i class="fa fa-envelope-o" aria-hidden="true"></i>
-										<div>info.deercreative@gmail.com</div>
+										<div>info@slms.com</div>
 									</li>
 								</ul>
 								<div class="top_bar_login ml-auto">
@@ -269,7 +269,7 @@
 					<div class="feature text-center trans_400">
 						<div class="feature_icon"><img src="{% static 'web/images/icon_1.png' %}" alt=""></div>
 						<h3 class="feature_title">AI Integration</h3>
-						<div class="feature_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p></div>
+						<div class="feature_text"><p>Seamlessly integrates AI for personalized learning, adapting content and recommendations based on individual progress and preferences.</p></div>
 					</div>
 				</div>
 
@@ -278,7 +278,7 @@
 					<div class="feature text-center trans_400">
 						<div class="feature_icon"><img src="{% static 'web/images/icon_2.png' %}" alt=""></div>
 						<h3 class="feature_title">Adaptive Assessments</h3>
-						<div class="feature_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p></div>
+						<div class="feature_text"><p>Tailors assessment difficulty in real-time, optimizing challenge levels for each learner and providing valuable insights for educators</p></div>
 					</div>
 				</div>
 
@@ -287,7 +287,7 @@
 					<div class="feature text-center trans_400">
 						<div class="feature_icon"><img src="{% static 'web/images/icon_3.png' %}" alt=""></div>
 						<h3 class="feature_title">Smart Recommendations</h3>
-						<div class="feature_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p></div>
+						<div class="feature_text"><p>Delivers personalized content suggestions and resources, leveraging AI to align with learners' interests, goals, and past performance</p></div>
 					</div>
 				</div>
 
@@ -296,7 +296,7 @@
 					<div class="feature text-center trans_400">
 						<div class="feature_icon"><img src="{% static 'web/images/icon_4.png' %}" alt=""></div>
 						<h3 class="feature_title">Award & Reward</h3>
-						<div class="feature_text"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p></div>
+						<div class="feature_text"><p>Utilizes gamification to motivate learners, offering badges, points, and leaderboards to incentivize engagement and celebrate achievements</p></div>
 					</div>
 				</div>
 
@@ -313,7 +313,7 @@
 				<div class="col">
 					<div class="section_title_container text-center">
 						<h2 class="section_title">Popular Online Courses</h2>
-						<div class="section_subtitle"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p></div>
+						<div class="section_subtitle"><p>Explore our range of popular courses designed to meet the demands of engineering students</p></div>
 					</div>
 				</div>
 			</div>
@@ -326,7 +326,7 @@
 						<div class="course_image"><img src="{{ course.image.url }}" alt=""></div>
 						<div class="course_body">
 							<h3 class="course_title"><a href="{{ course.get_absolute_url }}">{{ course.title }}</a></h3>
-							<div class="course_teacher">Engr. {{ course.owner.username|title }}</div>
+							<div class="course_teacher">{{ course.owner.title }} {{ course.owner.username|title }}</div>
 							<div class="course_text">
 								<p>{{ course.description|truncatewords:15 }}</p>
 							</div>
@@ -414,7 +414,8 @@
 	<!-- Counter -->
 
 	<div class="counter">
-		<div class="counter_background" style="background-image:url(/static/web/images/counter_background.jpg)"></div>
+		<!-- <div class="counter_background" style="background-image:url(/static/web/images/counter_background.jpg)"></div> -->
+		<div class="counter_background" style="background-image:url(https://unilag.edu.ng/wp-content/uploads/bedf91ff-2c6d-46c1-bc53-ecf5aa552c37.jpg)"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">
@@ -428,26 +429,26 @@
 							
 							<!-- Milestone -->
 							<div class="milestone">
-								<div class="milestone_counter" data-end-value="15">0</div>
-								<div class="milestone_text">years</div>
+								<div class="milestone_counter" data-end-value="4">4</div>
+								<div class="milestone_text">COURSES</div>
 							</div>
 
 							<!-- Milestone -->
 							<div class="milestone">
-								<div class="milestone_counter" data-end-value="120" data-sign-after="k">0</div>
-								<div class="milestone_text">years</div>
+								<div class="milestone_counter" data-end-value="1000" data-sign-after="+">1000+</div>
+								<div class="milestone_text">QUESTONS</div>
 							</div>
 
 							<!-- Milestone -->
 							<div class="milestone">
-								<div class="milestone_counter" data-end-value="670" data-sign-after="+">0</div>
-								<div class="milestone_text">years</div>
+								<div class="milestone_counter" data-end-value="1000" data-sign-after="+">0</div>
+								<div class="milestone_text">SOLUTIONS</div>
 							</div>
 
 							<!-- Milestone -->
 							<div class="milestone">
-								<div class="milestone_counter" data-end-value="320">0</div>
-								<div class="milestone_text">years</div>
+								<div class="milestone_counter" data-end-value="2000" data-sign-after="+">0</div>
+								<div class="milestone_text">STUDENTS</div>
 							</div>
 
 						</div>
@@ -460,7 +461,7 @@
 				<div class="row fill_height">
 					<div class="col fill_height">
 						<form class="counter_form_content d-flex flex-column align-items-center justify-content-center" action="#">
-							<div class="counter_form_title">courses now</div>
+							<div class="counter_form_title">ENROLL NOW</div>
 							<input type="text" class="counter_input" placeholder="Your Name:" required="required">
 							<input type="tel" class="counter_input" placeholder="Phone:" required="required">
 							<select name="counter_select" id="counter_select" class="counter_input counter_options">
@@ -821,7 +822,7 @@
 									<div class="footer_contact_info">
 										<ul>
 											<li>Email: mail@slms.com</li>
-											<li>Phone:  +(88) 111 555 666</li>
+											<li>Phone:  +(234) 12345678</li>
 											<li>Faculty Of Engineering, Univeristy Of Lagos</li>
 										</ul>
 									</div>
