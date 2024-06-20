@@ -121,7 +121,7 @@
 		</div>
 		<nav class="menu_nav">
 			<ul class="menu_mm">
-				<li class="menu_mm"><a href="index.html">Home</a></li>
+				<li class="menu_mm"><a href="{% url 'web-home' %}">Home</a></li>
 				<li class="menu_mm"><a href="#">About</a></li>
 				<li class="menu_mm"><a href="#">Courses</a></li>
 				<li class="menu_mm"><a href="#">Blog</a></li>
@@ -140,7 +140,7 @@
 					<div class="col">
 						<div class="breadcrumbs">
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="{% url 'web-home' %}">Home</a></li>
 								<li><a href="courses.html">Courses</a></li>
 								<li>Course Details</li>
 							</ul>
@@ -552,7 +552,7 @@
 								<div class="latest d-flex flex-row align-items-start justify-content-start">
 									<div class="latest_image"><div><img src="{{ course.image.url }}" alt=""></div></div>
 									<div class="latest_content">
-										<div class="latest_title"><a href="course.html">{{ course.title }}</a></div>
+										<div class="latest_title"><a href="{{ course.get_absolute_url }}">{{ course.title }}</a></div>
 										<div class="latest_price">{{ course.code }}</div>
 									</div>
 								</div>
@@ -641,7 +641,7 @@
 										<ul>
 											<li>Email: mail@slms.com</li>
 											<li>Phone:  +(234) 12345678</li>
-											<li>Faculty Of Engineering, Univeristy Of Lagos</li>
+											<li>Faculty Of Engineering, University Of Lagos</li>
 										</ul>
 									</div>
 								</div>
