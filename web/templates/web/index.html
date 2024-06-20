@@ -711,48 +711,20 @@
 					<div class="news_posts_small">
 
 						<!-- News Posts Small -->
+						 {% for post in posts %}
 						<div class="news_post_small">
-							<div class="news_post_small_title"><a href="blog_single.html">UNILAG STAFF SCHOOL PUPILS PERFORM A FEAT</a></div>
+							<div class="news_post_small_title"><a href="blog_single.html">{{ post.title }}</a></div>
 							<div class="news_post_meta">
 								<ul>
-									<li><a href="#">admin</a></li>
-									<li><a href="#">June 11, 2024</a></li>
+									<li><a href="#">{{ post.content|truncatewords:10 }}</a></li>
+									<li><a href="#">{{ post.author.username }}</a></li>
+									<li><a href="#">{{ post.created_at|date:"Y-m-d" }}</a></li>
 								</ul>
 							</div>
 						</div>
+						{% endfor %}
 
-						<!-- News Posts Small -->
-						<div class="news_post_small">
-							<div class="news_post_small_title"><a href="blog_single.html">UNILAG STAFF SCHOOL ANNOUNCES 2024 SUMMER CAMP</a></div>
-							<div class="news_post_meta">
-								<ul>
-									<li><a href="#">admin</a></li>
-									<li><a href="#">June 11, 2024</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- News Posts Small -->
-						<div class="news_post_small">
-							<div class="news_post_small_title"><a href="blog_single.html">UNILAG HOLDS MEMORIAL SERVICE IN HONOUR OF LATE PROFESSOR SOFOLUWE</a></div>
-							<div class="news_post_meta">
-								<ul>
-									<li><a href="#">admin</a></li>
-									<li><a href="#">June 11, 2024</a></li>
-								</ul>
-							</div>
-						</div>
-
-						<!-- News Posts Small -->
-						<div class="news_post_small">
-							<div class="news_post_small_title"><a href="blog_single.html">UNILAG WINS NACA BEST UNIVERSITY AWARD</a></div>
-							<div class="news_post_meta">
-								<ul>
-									<li><a href="#">admin</a></li>
-									<li><a href="#">June 11, 2024</a></li>
-								</ul>
-							</div>
-						</div>
+						
 
 					</div>
 				</div>

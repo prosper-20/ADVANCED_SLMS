@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib.auth import get_user_model
+from .models import Post
 
 User = get_user_model()
 
@@ -102,7 +103,8 @@ class LogoutPage(View):
 class HomePage(View):
     def get(self, request):
         courses = Course.objects.all()[:3]
-        return render(request, 'web/index.html', {"courses": courses})
+        posts = Post.objects.all()
+        return render(request, 'web/index.html', {"courses": courses, "posts": posts})
     
 
 class CoursesPage(View):
