@@ -34,13 +34,17 @@ class User(AbstractBaseUser, PermissionsMixin):
         return self.username
     
 
-    
+DEPARTMENT_CHOICES = (
+    ("Computer Engineering", 'Computer Engineering'),
+    ("Electrical & Electronics Engineering", "Electrical & Electronics Engineering")
+)
 
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="profile_pictures", default="user.jpg")
-    bio = models.TextField()
+    bio = models.TextField(blank=True, null=True)
+    department = models.CharField(choices=DEPARTMENT_CHOICES, max_length=200, default="Electrical & Electronics Engineering")
 
     def __str__(self):
         return f"{self.user.title} {self.user.username}"

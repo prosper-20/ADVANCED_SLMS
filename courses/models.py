@@ -31,6 +31,11 @@ SEMESTER = (
     ("Second Semester", "Second Semester")
 )
 
+COURSE_MODE_CHOICES = (
+    ('Physical', 'Physical'),
+    ('Online', 'Online')
+)
+
 class Course(models.Model):
     owner = models.ForeignKey(User, related_name='courses_created', on_delete=models.CASCADE)
     subject = models.ForeignKey(Subject, related_name='courses', on_delete=models.CASCADE)
@@ -43,6 +48,8 @@ class Course(models.Model):
     semester = models.CharField(default="First Semester", choices=SEMESTER, max_length=100)
     students = models.ManyToManyField(User, related_name='courses_joined', blank=True)
     created = models.DateTimeField(auto_now_add=True)
+    mode = models.CharField(default="Physical", choices=COURSE_MODE_CHOICES, max_length=30)
+    duration = models.TextField(default="12 weeks")
 
     class Meta:
         ordering = ['-created']

@@ -65,7 +65,7 @@
 							</div>
 							<nav class="main_nav_contaner ml-auto">
 								<ul class="main_nav">
-									<li><a href="{% url 'home' %}">Home</a></li>
+									<li><a href="{% url 'web-home' %}">Home</a></li>
 									<li><a href="{% url 'about-us' %}">About</a></li>
 									<li><a href="{% url 'courses' %}">Courses</a></li>
 									<li><a href="blog.html">Blog</a></li>
@@ -201,7 +201,7 @@
 									<div class="tab_panel_title">{{ course.title }}</div>
 									<div class="tab_panel_content">
 										<div class="tab_panel_text">
-											<p>{{ course.description }}</p>
+											<p>{{ course.overview }}</p>
 										</div>
 										<div class="tab_panel_section">
 											<div class="tab_panel_subtitle">Requirements</div>
@@ -475,31 +475,31 @@
 									<!-- Feature -->
 									<div class="feature d-flex flex-row align-items-center justify-content-start">
 										<div class="feature_title"><i class="fa fa-clock-o" aria-hidden="true"></i><span>Duration:</span></div>
-										<div class="feature_text ml-auto">2 weeks</div>
+										<div class="feature_text ml-auto">{{ course.duration }}</div>
 									</div>
 
 									<!-- Feature -->
 									<div class="feature d-flex flex-row align-items-center justify-content-start">
-										<div class="feature_title"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>Lectures:</span></div>
-										<div class="feature_text ml-auto">10</div>
+										<div class="feature_title"><i class="fa fa-file-text-o" aria-hidden="true"></i><span>Modules:</span></div>
+										<div class="feature_text ml-auto">{{ course.modules.all.count }}</div>
 									</div>
 
 									<!-- Feature -->
-									<div class="feature d-flex flex-row align-items-center justify-content-start">
+									<!-- <div class="feature d-flex flex-row align-items-center justify-content-start">
 										<div class="feature_title"><i class="fa fa-question-circle-o" aria-hidden="true"></i><span>Lectures:</span></div>
 										<div class="feature_text ml-auto">6</div>
+									</div> -->
+
+									<!-- Feature -->
+									<div class="feature d-flex flex-row align-items-center justify-content-start">
+										<div class="feature_title"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Mode:</span></div>
+										<div class="feature_text ml-auto">{{ course.mode }}</div>
 									</div>
 
 									<!-- Feature -->
 									<div class="feature d-flex flex-row align-items-center justify-content-start">
-										<div class="feature_title"><i class="fa fa-list-alt" aria-hidden="true"></i><span>Lectures:</span></div>
-										<div class="feature_text ml-auto">Yes</div>
-									</div>
-
-									<!-- Feature -->
-									<div class="feature d-flex flex-row align-items-center justify-content-start">
-										<div class="feature_title"><i class="fa fa-users" aria-hidden="true"></i><span>Lectures:</span></div>
-										<div class="feature_text ml-auto">35</div>
+										<div class="feature_title"><i class="fa fa-users" aria-hidden="true"></i><span>Students:</span></div>
+										<div class="feature_text ml-auto">{{ course.num_enrolled_students }}</div>
 									</div>
 
 								</div>
@@ -511,66 +511,54 @@
 							<div class="sidebar_section_title">Lecturer</div>
 							<div class="sidebar_teacher">
 								<div class="teacher_title_container d-flex flex-row align-items-center justify-content-start">
-									<div class="teacher_image"><img src="{% static 'web/images/teacher.jpg' %}" alt=""></div>
+									<div class="teacher_image"><img src="{{ course.owner.profile.image.url }}" alt=""></div>
 									<div class="teacher_title">
 										<div class="teacher_name"><a href="#">{{ course.owner.title}} {{ course.owner.username|title }}</a></div>
-										<div class="teacher_position">Marketing & Management</div>
+										<div class="teacher_position">{{ course.owner.department }}</div>
 									</div>
 								</div>
 								<div class="teacher_meta_container">
 									<!-- Teacher Rating -->
+									 <br>
 									<div class="teacher_meta d-flex flex-row align-items-center justify-content-start">
 										<div class="teacher_meta_title">Average Rating:</div>
 										<div class="teacher_meta_text ml-auto"><span>4.7</span><i class="fa fa-star" aria-hidden="true"></i></div>
 									</div>
 									<!-- Teacher Review -->
-									<div class="teacher_meta d-flex flex-row align-items-center justify-content-start">
+									<!-- <div class="teacher_meta d-flex flex-row align-items-center justify-content-start">
 										<div class="teacher_meta_title">Review:</div>
 										<div class="teacher_meta_text ml-auto"><span>12k</span><i class="fa fa-comment" aria-hidden="true"></i></div>
-									</div>
+									</div> -->
 									<!-- Teacher Quizzes -->
-									<div class="teacher_meta d-flex flex-row align-items-center justify-content-start">
+									<!-- <div class="teacher_meta d-flex flex-row align-items-center justify-content-start">
 										<div class="teacher_meta_title">Quizzes:</div>
 										<div class="teacher_meta_text ml-auto"><span>600</span><i class="fa fa-user" aria-hidden="true"></i></div>
-									</div>
+									</div> -->
 								</div>
 								<div class="teacher_info">
-									<p>Hi! I am Masion, I’m a marketing & management  eros pulvinar velit laoreet, sit amet egestas erat dignissim. Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum nam nulla ipsum.</p>
+									<p>{{ course.owner.profile.bio }}</p>
 								</div>
 							</div>
 						</div>
 
 						<!-- Latest Course -->
 						<div class="sidebar_section">
-							<div class="sidebar_section_title">Latest Courses</div>
+							<div class="sidebar_section_title">Explore Courses</div>
 							<div class="sidebar_latest">
 
 								<!-- Latest Course -->
-								<div class="latest d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_image"><div><img src="{% static 'web/images/latest_1.jpg' %}" alt=""></div></div>
-									<div class="latest_content">
-										<div class="latest_title"><a href="course.html">How to Design a Logo a Beginners Course</a></div>
-										<div class="latest_price">Free</div>
-									</div>
-								</div>
-
 								<!-- Latest Course -->
+								{% for course in other_courses %}
 								<div class="latest d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_image"><div><img src="{% static 'web/images/latest_2.jpg' %}" alt=""></div></div>
+									<div class="latest_image"><div><img src="{{ course.image.url }}" alt=""></div></div>
 									<div class="latest_content">
-										<div class="latest_title"><a href="course.html">Photography for Beginners Masterclass</a></div>
-										<div class="latest_price">$170</div>
+										<div class="latest_title"><a href="course.html">{{ course.title }}</a></div>
+										<div class="latest_price">{{ course.code }}</div>
 									</div>
 								</div>
+								{% endfor %}
 
-								<!-- Latest Course -->
-								<div class="latest d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_image"><div><img src="{% static 'web/images/latest_3.jpg' %}" alt=""></div></div>
-									<div class="latest_content">
-										<div class="latest_title"><a href="course.html">The Secrets of Body Language</a></div>
-										<div class="latest_price">$220</div>
-									</div>
-								</div>
+								
 
 							</div>
 						</div>
@@ -651,8 +639,8 @@
 									<div class="footer_title">Contact Us</div>
 									<div class="footer_contact_info">
 										<ul>
-											<li>Email: Info.deercreative@gmail.com</li>
-											<li>Phone:  +(88) 111 555 666</li>
+											<li>Email: mail@slms.com</li>
+											<li>Phone:  +(234) 12345678</li>
 											<li>Faculty Of Engineering, Univeristy Of Lagos</li>
 										</ul>
 									</div>
@@ -667,7 +655,7 @@
 									<div class="footer_title">Contact Us</div>
 									<div class="footer_links_container">
 										<ul>
-											<li><a href="{% url 'home' %}">Home</a></li>
+											<li><a href="{% url 'web-home' %}">Home</a></li>
 											<li><a href="{% url 'about-us' %}">About</a></li>
 											<li><a href="">Contact</a></li>
 											<li><a href="#">Features</a></li>

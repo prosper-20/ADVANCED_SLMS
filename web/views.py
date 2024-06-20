@@ -113,7 +113,8 @@ class CoursesPage(View):
 class CourseDetailPage(View):
     def get(self, request, slug):
         course = Course.objects.get(slug=slug)
-        return render(request, 'web/course.html', {"course": course})
+        other_courses = Course.objects.exclude(slug=slug)
+        return render(request, 'web/course.html', {"course": course, 'other_courses': other_courses})
 
 class AboutUsPage(View):
     def get(self, request):
