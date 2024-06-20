@@ -45,7 +45,7 @@
 									{% if user.is_authenticated %}
 									<div class="login_button"><a href="#">Hi, {{ user.username|title }}</a></div>
 									{% else %}
-									<div class="login_button"><a href="#">Register or Login</a></div>
+									<div class="login_button"><a href="{% url 'web-login' %}">Register or Login</a></div>
 									{% endif %}
 								</div>
 							</div>
