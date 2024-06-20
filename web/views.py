@@ -7,7 +7,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from courses.models import Subject
 from django.contrib.auth import get_user_model
-from .models import Post
+from .models import Post, Newsletter
 
 User = get_user_model()
 
@@ -114,6 +114,13 @@ class CoursesPage(View):
         subjects = Subject.objects.all()
         return render(request, 'web/courses.html', {"courses": courses, "subjects": subjects})
     
+    def post(self, request):
+        email = request.POST.get('email')
+        Newsletter.objects.create(email=email)
+        messages.info(request, "You have successfully subscribed to our newsletter")
+        return redirect("courses/")
+    
+    
 class CourseDetailPage(View):
     def get(self, request, slug):
         course = Course.objects.get(slug=slug)
@@ -123,6 +130,11 @@ class CourseDetailPage(View):
 class AboutUsPage(View):
     def get(self, request):
         return render(request, 'web/about.html')
+    
+
+
+# class NewsletterView(View):
+#     def post(self, request)
 
     
 
