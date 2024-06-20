@@ -5,6 +5,7 @@ from django.contrib import auth
 from django.urls import reverse
 from django.shortcuts import redirect
 from django.contrib import messages
+from courses.models import Subject
 from django.contrib.auth import get_user_model
 from .models import Post
 
@@ -110,7 +111,8 @@ class HomePage(View):
 class CoursesPage(View):
     def get(self, request):
         courses = Course.objects.all()
-        return render(request, 'web/courses.html', {"courses": courses})
+        subjects = Subject.objects.all()
+        return render(request, 'web/courses.html', {"courses": courses, "subjects": subjects})
     
 class CourseDetailPage(View):
     def get(self, request, slug):

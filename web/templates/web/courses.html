@@ -177,10 +177,10 @@
 							{% for course in courses %}
 							<div class="col-lg-6 course_col">
 								<div class="course">
-									<div class="course_image"><img src="{% static 'web/images/course_4.jpg' %}" alt=""></div>
+									<div class="course_image"><img src="{{ course.image.url }}" alt=""></div>
 									<div class="course_body">
 										<h3 class="course_title"><a href="course.html">{{ course.title }}</a></h3>
-										<div class="course_teacher">{{ course.owner.username }}</div>
+										<div class="course_teacher">{{ course.owner.profile }}</div>
 										<div class="course_text">
 											<p>{{ course.description|truncatewords:15 }}</p>
 										</div>
@@ -241,46 +241,34 @@
 							<div class="sidebar_section_title">Categories</div>
 							<div class="sidebar_categories">
 								<ul>
-									<li><a href="#">Art & Design</a></li>
+									{% for subject in subjects %}
+									<li><a href="#">{{ subject.title }}</a></li>
+									{% endfor %}
+									<!-- <li><a href="#">Art & Design</a></li>
 									<li><a href="#">Business</a></li>
 									<li><a href="#">IT & Software</a></li>
 									<li><a href="#">Languages</a></li>
-									<li><a href="#">Programming</a></li>
+									<li><a href="#">Programming</a></li> -->
 								</ul>
 							</div>
 						</div>
 
 						<!-- Latest Course -->
 						<div class="sidebar_section">
-							<div class="sidebar_section_title">Latest Courses</div>
+							<div class="sidebar_section_title">Explore Courses</div>
 							<div class="sidebar_latest">
 
 								<!-- Latest Course -->
+								
+								{% for course in other_courses %}
 								<div class="latest d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_image"><div><img src="{% static 'web/images/latest_1.jpg' %}" alt=""></div></div>
+									<div class="latest_image"><div><img src="{{ course.image.url }}" alt=""></div></div>
 									<div class="latest_content">
-										<div class="latest_title"><a href="course.html">How to Design a Logo a Beginners Course</a></div>
-										<div class="latest_price">Free</div>
+										<div class="latest_title"><a href="{{ course.get_absolute_url }}">{{ course.title }}</a></div>
+										<div class="latest_price">{{ course.code }}</div>
 									</div>
 								</div>
-
-								<!-- Latest Course -->
-								<div class="latest d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_image"><div><img src="{% static 'web/images/latest_2.jpg' %}" alt=""></div></div>
-									<div class="latest_content">
-										<div class="latest_title"><a href="course.html">Photography for Beginners Masterclass</a></div>
-										<div class="latest_price">$170</div>
-									</div>
-								</div>
-
-								<!-- Latest Course -->
-								<div class="latest d-flex flex-row align-items-start justify-content-start">
-									<div class="latest_image"><div><img src="{% static 'web/images/latest_3.jpg' %}" alt=""></div></div>
-									<div class="latest_content">
-										<div class="latest_title"><a href="course.html">The Secrets of Body Language</a></div>
-										<div class="latest_price">$220</div>
-									</div>
-								</div>
+								{% endfor %}
 
 							</div>
 						</div>
