@@ -118,9 +118,9 @@ class CoursesPage(View):
         email = request.POST.get('email')
         Newsletter.objects.create(email=email)
         messages.info(request, "You have successfully subscribed to our newsletter")
-        return redirect("courses/")
+        return redirect(reverse("courses"))
     
-    
+
 class CourseDetailPage(View):
     def get(self, request, slug):
         course = Course.objects.get(slug=slug)

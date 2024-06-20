@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Post
+from .models import Post, Newsletter
+
+
+admin.site.register(Newsletter)
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
