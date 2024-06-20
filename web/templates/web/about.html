@@ -35,11 +35,11 @@
 									<li><div class="question">Have any questions?</div></li>
 									<li>
 										<i class="fa fa-phone" aria-hidden="true"></i>
-										<div>001-1234-88888</div>
+										<div>(+234) 12345678</div>
 									</li>
 									<li>
 										<i class="fa fa-envelope-o" aria-hidden="true"></i>
-										<div>info.deercreative@gmail.com</div>
+										<div>mail@slms.com</div>
 									</li>
 								</ul>
 								<div class="top_bar_login ml-auto">
@@ -121,12 +121,12 @@
 		</div>
 		<nav class="menu_nav">
 			<ul class="menu_mm">
-				<li class="menu_mm"><a href="index.html">Home</a></li>
-				<li class="menu_mm"><a href="#">About</a></li>
-				<li class="menu_mm"><a href="#">Courses</a></li>
-				<li class="menu_mm"><a href="#">Blog</a></li>
-				<li class="menu_mm"><a href="#">Page</a></li>
-				<li class="menu_mm"><a href="contact.html">Contact</a></li>
+				<li class="active"><a href="#">Home</a></li>
+									<li><a href="{% url 'about-us' %}">About</a></li>
+									<li><a href="{% url 'courses' %}">Courses</a></li>
+									<li><a href="blog.html">Blog</a></li>
+									<li><a href="#">Page</a></li>
+									<li><a href="contact.html">Contact</a></li>
 			</ul>
 		</nav>
 	</div>
@@ -140,7 +140,7 @@
 					<div class="col">
 						<div class="breadcrumbs">
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="{% url 'web-home' %}">Home</a></li>
 								<li>About</li>
 							</ul>
 						</div>
@@ -211,7 +211,7 @@
 				<div class="col">
 					<div class="section_title_container text-center">
 						<h2 class="section_title">Why Choose The SLMS</h2>
-						<div class="section_subtitle"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p></div>
+						<div class="section_subtitle"><p>The SLMS provides a versatile and efficient solution for delivering, managing, and enhancing learning experiences across diverse educational and organizational settings</p></div>
 					</div>
 				</div>
 			</div>
@@ -281,7 +281,7 @@
 				<div class="col">
 					<div class="section_title_container text-center">
 						<h2 class="section_title">Meet Some Lecturers</h2>
-						<div class="section_subtitle"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel gravida arcu. Vestibulum feugiat, sapien ultrices fermentum congue, quam velit venenatis sem</p></div>
+						<div class="section_subtitle"><p>Don't miss this chance to connect with our passionate educators and gain valuable knowledge to fuel your academic and professional aspirations. Register now to reserve your spot!</p></div>
 					</div>
 				</div>
 			</div>
@@ -290,10 +290,10 @@
 				<!-- Team Item -->
 				<div class="col-lg-3 col-md-6 team_col">
 					<div class="team_item">
-						<div class="team_image"><img src="{% static 'web/images/team_1.jpg' %}" alt=""></div>
+						<div class="team_image"><img src="https://lh3.googleusercontent.com/proxy/1Zoh-jdG8b8LMQLCi50nWj6PO-Dd1KUNTkP0rFbrX8CqPQjbOD2u8SH01RJ3lrI63s85ZZ45GVhElgXup7WJFx44Q8-PSUOI-BDmuw" alt=""></div>
 						<div class="team_body">
-							<div class="team_title"><a href="#">Jacke Masito</a></div>
-							<div class="team_subtitle">Marketing & Management</div>
+							<div class="team_title"><a href="#">Dr. Ibukun Adewale</a></div>
+							<div class="team_subtitle">Computer Engineering</div>
 							<div class="social_list">
 								<ul>
 									<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -308,10 +308,11 @@
 				<!-- Team Item -->
 				<div class="col-lg-3 col-md-6 team_col">
 					<div class="team_item">
-						<div class="team_image"><img src="{% static 'web/images/team_2.jpg' %}" alt=""></div>
+						<div class="team_image"><img src="https://media.licdn.com/dms/image/D4D03AQGSU7RJLCOfFA/profile-displayphoto-shrink_200_200/0/1700916733020?e=2147483647&v=beta&t=ABZgEzMmFq2Y2CuZvSSo4JKZydO7mrhmHnzzrmzlFos" alt=""></div>
+						<!-- <div class="team_image"><img src="{% static 'web/images/team_2.jpg' %}" alt=""></div> -->
 						<div class="team_body">
-							<div class="team_title"><a href="#">William James</a></div>
-							<div class="team_subtitle">Designer & Website</div>
+							<div class="team_title"><a href="#">Dr. Gbenga Ilori</a></div>
+							<div class="team_subtitle">Research & Innovation</div>
 							<div class="social_list">
 								<ul>
 									<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
@@ -326,7 +327,8 @@
 				<!-- Team Item -->
 				<div class="col-lg-3 col-md-6 team_col">
 					<div class="team_item">
-						<div class="team_image"><img src="{% static 'web/images/team_3.jpg' %}" alt=""></div>
+						<div class="team_image"><img src="https://unilag.edu.ng/wp-content/uploads/IMG_7356-e1590594797228.jpg" alt=""></div>
+						<!-- <div class="team_image"><img src="{% static 'web/images/team_3.jpg' %}" alt=""></div> -->
 						<div class="team_body">
 							<div class="team_title"><a href="#">John Tyler</a></div>
 							<div class="team_subtitle">Quantum mechanics</div>
@@ -358,7 +360,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -507,7 +508,7 @@
 									<div class="footer_contact_info">
 										<ul>
 											<li>Email: mail@slms.com</li>
-											<li>Phone:  +(88) 111 555 666</li>
+											<li>Phone:  +(234) 12345678</li>
 											<li>Faculty Of Engineering, University Of Lagos</li>
 										</ul>
 									</div>
@@ -519,10 +520,10 @@
 					
 								<!-- Footer links -->
 								<div class="footer_section footer_links">
-									<div class="footer_title">Contact Us</div>
+									<div class="footer_title">Pages</div>
 									<div class="footer_links_container">
 										<ul>
-											<li><a href="index.html">Home</a></li>
+											<li><a href="{% url 'web-home' %}">Home</a></li>
 											<li><a href="about.html">About</a></li>
 											<li><a href="contact.html">Contact</a></li>
 											<li><a href="#">Features</a></li>
@@ -540,7 +541,7 @@
 					
 								<!-- Footer links -->
 								<div class="footer_section footer_mobile">
-									<div class="footer_title">Mobile</div>
+									<div class="footer_title">Download Now</div>
 									<div class="footer_mobile_content">
 										<div class="footer_image"><a href="#"><img src="{% static 'web/images/mobile_1.png' %}" alt=""></a></div>
 										<div class="footer_image"><a href="#"><img src="{% static 'web/images/mobile_2.png' %}" alt=""></a></div>
