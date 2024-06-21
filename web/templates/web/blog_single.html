@@ -66,10 +66,10 @@
 							</div>
 							<nav class="main_nav_contaner ml-auto">
 								<ul class="main_nav">
-									<li><a href="index.html">Home</a></li>
-									<li><a href="about.html">About</a></li>
-									<li><a href="courses.html">Courses</a></li>
-									<li><a href="blog.html">Blog</a></li>
+									<li><a href="{% url 'web-home' %}">Home</a></li>
+									<li><a href="{% url 'about-us' %}">About</a></li>
+									<li><a href="{% url 'courses' %}">Courses</a></li>
+									<li><a href="{% url 'blog-page' %}">Blog</a></li>
 									<li><a href="#">Page</a></li>
 									<li><a href="contact.html">Contact</a></li>
 								</ul>
@@ -464,11 +464,11 @@
 								<div class="footer_section footer_about">
 									<div class="footer_logo_container">
 										<a href="#">
-											<div class="footer_logo_text">Unic<span>at</span></div>
+											<div class="footer_logo_text">SLMS<span></div>
 										</a>
 									</div>
 									<div class="footer_about_text">
-										<p>Lorem ipsum dolor sit ametium, consectetur adipiscing elit.</p>
+										<p>Embracing Innovation In Learning</p>
 									</div>
 									<div class="footer_social">
 										<ul>
@@ -489,9 +489,9 @@
 									<div class="footer_title">Contact Us</div>
 									<div class="footer_contact_info">
 										<ul>
-											<li>Email: Info.deercreative@gmail.com</li>
-											<li>Phone:  +(88) 111 555 666</li>
-											<li>40 Baria Sreet 133/2 New York City, United States</li>
+											<li>Email: mail@slms.com</li>
+											<li>Phone:  (+234) 12345678</li>
+											<li>Faculty Of Engineering, University Of Lagos</li>
 										</ul>
 									</div>
 								</div>
@@ -502,14 +502,14 @@
 					
 								<!-- Footer links -->
 								<div class="footer_section footer_links">
-									<div class="footer_title">Contact Us</div>
+									<div class="footer_title">Pages</div>
 									<div class="footer_links_container">
 										<ul>
-											<li><a href="index.html">Home</a></li>
-											<li><a href="about.html">About</a></li>
+											<li><a href="{% url 'web-home' %}">Home</a></li>
+											<li><a href="{% url 'about-us' %}">About</a></li>
 											<li><a href="contact.html">Contact</a></li>
 											<li><a href="#">Features</a></li>
-											<li><a href="courses.html">Courses</a></li>
+											<li><a href="{% url 'courses' %}">Courses</a></li>
 											<li><a href="#">Events</a></li>
 											<li><a href="#">Gallery</a></li>
 											<li><a href="#">FAQs</a></li>
@@ -523,7 +523,7 @@
 					
 								<!-- Footer links -->
 								<div class="footer_section footer_mobile">
-									<div class="footer_title">Mobile</div>
+									<div class="footer_title">Download Now</div>
 									<div class="footer_mobile_content">
 										<div class="footer_image"><a href="#"><img src="{% static 'web/images/mobile_1.png' %}" alt=""></a></div>
 										<div class="footer_image"><a href="#"><img src="{% static 'web/images/mobile_2.png' %}" alt=""></a></div>
