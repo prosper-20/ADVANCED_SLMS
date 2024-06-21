@@ -132,6 +132,12 @@ class AboutUsPage(View):
         return render(request, 'web/about.html')
     
 
+class BlogPage(View):
+    def get(self, request):
+        posts = Post.objects.all()
+        return render(request, "web/blog.html", {"posts": posts})
+    
+
 
 # class NewsletterView(View):
 #     def post(self, request)
