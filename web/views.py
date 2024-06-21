@@ -141,7 +141,8 @@ class BlogPage(View):
 class BlogDetailPage(View):
     def get(self, request, post_slug):
         post = get_object_or_404(Post, slug=post_slug)
-        return render(request, "web/blog_single.html", {"post": post})
+        other_posts = Post.objects.exclude(slug=post_slug)
+        return render(request, "web/blog_single.html", {"post": post, "other_posts": other_posts})
     
 
 
