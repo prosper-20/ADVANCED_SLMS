@@ -7,7 +7,9 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from courses.models import Subject
 from django.contrib.auth import get_user_model
-from .models import Post, Newsletter
+from .models import Post, Newsletter, Category
+from django.db.models import Count
+
 
 User = get_user_model()
 
@@ -142,7 +144,8 @@ class BlogDetailPage(View):
     def get(self, request, post_slug):
         post = get_object_or_404(Post, slug=post_slug)
         other_posts = Post.objects.exclude(slug=post_slug)
-        return render(request, "web/blog_single.html", {"post": post, "other_posts": other_posts})
+        categories_with_counts = Category.objects.annotate(post_count=Count('post'))
+        return render(request, "web/blog_single.html", {"post": post, "other_posts": other_posts, "categories_with_counts": categories_with_counts})
     
 
 

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Blog Single</title>
+<title>SLMS | Post | {{ post.title }}</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Unicat project">
@@ -190,11 +190,11 @@
 						<div class="blog_tags">
 							<span>Tags: </span>
 							<ul>
-								<li><a href="#">Education</a>, </li>
-								<li><a href="#">Math</a>, </li>
+								<li><a href="#">{{ post.category.name }}</a></li>
+								<!-- <li><a href="#">Math</a>, </li>
 								<li><a href="#">Food</a>, </li>
 								<li><a href="#">Schools</a>, </li>
-								<li><a href="#">Religion</a>, </li>
+								<li><a href="#">Religion</a>, </li> -->
 							</ul>
 						</div>
 						<div class="blog_social ml-lg-auto">
@@ -312,11 +312,10 @@
 							<div class="sidebar_section_title">Categories</div>
 							<div class="sidebar_categories">
 								<ul class="categories_list">
-									<li><a href="#" class="clearfix">Art & Design<span>(25)</span></a></li>
-									<li><a href="#" class="clearfix">Business<span>(10)</span></a></li>
-									<li><a href="#" class="clearfix">IT & Software<span>(22)</span></a></li>
-									<li><a href="#" class="clearfix">Languages<span>(12)</span></a></li>
-									<li><a href="#" class="clearfix">Programming<span>(18)</span></a></li>
+									{% for category in categories_with_counts %}
+									<li><a href="#" class="clearfix">{{ category.name }}<span>{{ category.post_count }}</span></a></li>
+									
+									{% endfor %}
 								</ul>
 							</div>
 						</div>
@@ -392,12 +391,12 @@
 							<div class="sidebar_section_title">Tags</div>
 							<div class="sidebar_tags">
 								<ul class="tags_list">
-									<li><a href="#">creative</a></li>
-									<li><a href="#">unique</a></li>
+									<li><a href="#">{{ post.category.name }}</a></li>
+									<!-- <li><a href="#">unique</a></li>
 									<li><a href="#">photography</a></li>
 									<li><a href="#">ideas</a></li>
 									<li><a href="#">wordpress</a></li>
-									<li><a href="#">startup</a></li>
+									<li><a href="#">startup</a></li> -->
 								</ul>
 							</div>
 						</div>
