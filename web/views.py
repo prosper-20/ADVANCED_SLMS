@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views import View
 from courses.models import Course
 from django.contrib import auth
@@ -136,6 +136,12 @@ class BlogPage(View):
     def get(self, request):
         posts = Post.objects.all()
         return render(request, "web/blog.html", {"posts": posts})
+    
+
+class BlogDetailPage(View):
+    def get(self, request, post_slug):
+        post = get_object_or_404(Post, slug=post_slug)
+        return render(request, "web/blog_single.html", {"post": post})
     
 
 

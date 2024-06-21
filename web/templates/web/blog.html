@@ -162,7 +162,7 @@
 						<div class="blog_post trans_200">
 							<div class="blog_post_image"><img src="{{ post.image.url }}" alt=""></div>
 							<div class="blog_post_body">
-								<div class="blog_post_title"><a href="blog_single.html">{{ post.title }}</a></div>
+								<div class="blog_post_title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></div>
 								<div class="blog_post_meta">
 									<ul>
 										<li><a href="#">{{ post.author.username }}</a></li>
