@@ -71,7 +71,7 @@
 									<li class="active"><a href="#">Home</a></li>
 									<li><a href="{% url 'about-us' %}">About</a></li>
 									<li><a href="{% url 'courses' %}">Courses</a></li>
-									<li><a href="blog.html">Blog</a></li>
+									<li><a href="{% url 'blog-page' %}">Blog</a></li>
 									<li><a href="#">Page</a></li>
 									<li><a href="contact.html">Contact</a></li>
 								</ul>
@@ -124,10 +124,10 @@
 		</div>
 		<nav class="menu_nav">
 			<ul class="menu_mm">
-				<li class="menu_mm"><a href="index.html">Home</a></li>
-				<li class="menu_mm"><a href="#">About</a></li>
-				<li class="menu_mm"><a href="#">Courses</a></li>
-				<li class="menu_mm"><a href="#">Blog</a></li>
+				<li class="menu_mm"><a href="{% url 'web-home' %}">Home</a></li>
+				<li class="menu_mm"><a href="{% url 'about-us' %}">About</a></li>
+				<li class="menu_mm"><a href="{% url 'courses' %}">Courses</a></li>
+				<li class="menu_mm"><a href="{% url 'blog-page' %}">Blog</a></li>
 				<li class="menu_mm"><a href="#">Page</a></li>
 				<li class="menu_mm"><a href="contact.html">Contact</a></li>
 			</ul>
@@ -135,9 +135,19 @@
 	</div>
 	
 	<!-- Home -->
-
+	{% if messages %}
+			{% for message in messages %}
+			<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+				<strong>{{ message }}</strong>
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+		{% endfor %}
+		{% endif %}
 	<div class="home">
 		<div class="home_slider_container">
+			
 			
 			<!-- Home Slider -->
 			<div class="owl-carousel owl-theme home_slider">
@@ -749,8 +759,9 @@
 
 						<!-- Newsletter Form -->
 						<div class="newsletter_form_container ml-lg-auto">
-							<form action="#" id="newsletter_form" class="newsletter_form d-flex flex-row align-items-center justify-content-center">
-								<input type="email" class="newsletter_input" placeholder="Your Email" required="required">
+							<form action="" method="post" id="newsletter_form" class="newsletter_form d-flex flex-row align-items-center justify-content-center">
+								{% csrf_token %}
+								<input type="email" name="email" class="newsletter_input" placeholder="Your Email" required="required">
 								<button type="submit" class="newsletter_button">subscribe</button>
 							</form>
 						</div>
