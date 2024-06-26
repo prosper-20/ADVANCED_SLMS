@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
-from courses.models import Course
+from courses.models import Course, Enrollment
 from django.contrib import auth
 from django.urls import reverse
 from django.shortcuts import redirect
@@ -9,7 +9,7 @@ from courses.models import Subject
 from django.contrib.auth import get_user_model
 from .models import Post, Newsletter, Category
 from django.db.models import Count
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 User = get_user_model()
 
@@ -123,11 +123,20 @@ class CoursesPage(View):
         return redirect(reverse("courses"))
     
 
-class CourseDetailPage(View):
+class CourseDetailPage(LoginRequiredMixin, View):
     def get(self, request, slug):
         course = Course.objects.get(slug=slug)
         other_courses = Course.objects.exclude(slug=slug)
         return render(request, 'web/course.html', {"course": course, 'other_courses': other_courses})
+    
+    def post(self, request, slug):
+        user=request.user
+        course = Course.objects.get(slug=slug)
+        if Enrollment.objects.filter(course=course, student=request.user).exists():
+            messages.info(request, "You have already enrolled in this course")
+        else:
+            Enrollment.objects.create(course=course, student=user)
+
 
 class AboutUsPage(View):
     def get(self, request):

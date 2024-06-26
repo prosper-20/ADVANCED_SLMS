@@ -2,11 +2,11 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
-from .models import Course
+from .models import Course, Enrollment
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic.base import TemplateResponseMixin, View
-from .forms import ModuleFormSet
+from .forms import ModuleFormSet, EnrollmentForm
 from django.forms.models import modelform_factory
 from django.apps import apps
 from .models import Module, Content
@@ -16,6 +16,7 @@ from .models import Subject
 from django.core.cache import cache
 from students.forms import CourseEnrollForm
 from django.views.generic.detail import DetailView
+from django.contrib.auth.decorators import login_required
 # class ManageCourseListView(ListView):
 #     model = Course
 #     template_name = 'courses/manage/course/list.html'
@@ -158,6 +159,22 @@ class ContentOrderView(CsrfExemptMixin, JsonRequestResponseMixin, View):
         for id, order in self.request_json.items():
             Content.objects.filter(id=id, module__course__owner=request.user).update(order=order)
         return self.render_json_response({'saved': 'OK'})
+    
+# @login_required
+# def enrollment_form_view(request, course_slug):
+#     if request.method == 'POST':
+#         form = EnrollmentForm(request.POST)
+#         if form.is_valid():
+#             # Process the valid form data
+#             course = get_object_or_404(Course, slug=course_slug)
+#             student = request.user  # Assuming the student is the logged-in user
+#             Enrollment.objects.create(course=course, student=student)
+#             return redirect('success_url_name')  # Redirect to a success page or URL name
+#     else:
+#         form = EnrollmentForm()
+
+#     # For both GET and unsuccessful POST, render the form template with the form object
+#     return render(request, 'enrollment_form.html', {'form': form})
     
 
 
