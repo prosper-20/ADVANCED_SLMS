@@ -136,6 +136,9 @@ class CourseDetailPage(LoginRequiredMixin, View):
             messages.info(request, "You have already enrolled in this course")
         else:
             Enrollment.objects.create(course=course, student=user)
+            messages.success(request, "You have successfully enrolled for this course")
+        return redirect(reverse('course-detail', kwargs={'slug': slug}))
+        
 
 
 class AboutUsPage(View):
