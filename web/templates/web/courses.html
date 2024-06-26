@@ -194,7 +194,7 @@
 								<div class="course">
 									<div class="course_image"><img src="{{ course.image.url }}" alt=""></div>
 									<div class="course_body">
-										<h3 class="course_title"><a href="course.html">{{ course.title }}</a></h3>
+										<h3 class="course_title"><a href="{{ course.get_absolute_url }}">{{ course.title }}</a></h3>
 										<div class="course_teacher">{{ course.owner.profile }}</div>
 										<div class="course_text">
 											<p>{{ course.description|truncatewords:15 }}</p>
