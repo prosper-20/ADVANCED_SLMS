@@ -109,6 +109,15 @@ class HomePage(View):
         posts = Post.objects.all()
         return render(request, 'web/index.html', {"courses": courses, "posts": posts})
     
+    def post(self, request):
+        email = request.POST.get('email')
+        if Newsletter.objects.filter(email=email).exists():
+            messages.info(request, 'You are already subscribed to this newsletter')
+        else:
+            Newsletter.objects.create(email=email)
+            messages.info(request, 'You have successfully subscribed to this newsletter')
+        return redirect(reverse('web-home'))
+    
 
 class CoursesPage(View):
     def get(self, request):
