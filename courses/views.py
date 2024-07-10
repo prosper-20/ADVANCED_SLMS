@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from .models import Course, Enrollment
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
@@ -264,8 +264,10 @@ def BroadCastView(request):
             
             # Save the instance with the creator assigned
             new_broadcast.save()
+            course_slug = get_object_or_404(Course, title=form.cleaned_data.get('course')).slug
+            print(course_slug)
             
-            return redirect('broadcast_list')  # Redirect to a success page or list view
+            return redirect(reverse('course-detail', kwargs={'slug': course_slug}))  # Redirect to a success page or list view
     else:
         form = BroadCastForm()
     

@@ -53,10 +53,13 @@ class Course(models.Model):
     mode = models.CharField(default="Physical", choices=COURSE_MODE_CHOICES, max_length=30)
     duration = models.TextField(default="12 weeks")
 
-    def get_students_enrolled(course_slug):
-        course = get_object_or_404(Course, slug=course_slug)
-        students = course.students.all()
-        return students
+    # def get_students_enrolled(course_slug):
+    #     course = get_object_or_404(Course, slug=course_slug)
+    #     students = course.students.all()
+    #     return students
+    
+    def get_students_enrolled(self):
+        return self.students.all()
 
 
     class Meta:
@@ -161,8 +164,7 @@ class Broadcast(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         # Send broadcast message to all students in the course
-        course_slug = self.course.slug
-        students = self.course.get_students_enrolled(course_slug)
+        students = self.course.get_students_enrolled()
         for student in students:
             # Implement your notification or messaging mechanism here
             # For example, sending an email to each student
@@ -183,7 +185,7 @@ class Broadcast(models.Model):
 
         # create mail object
         mail = mt.Mail(
-            sender=mt.Address(email="mailtrap@example.com", name="Mailtrap Test"),
+            sender=mt.Address(email="mailtrap@demomailtrap.com", name="Mailtrap Test"),
             to=[mt.Address(email=student.email)],
             subject="New Broadcast!",
             text=self.message,
