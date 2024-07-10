@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'djoser',
     'redisboard',
     'books.apps.BooksConfig',
-    'web.apps.WebConfig'
+    'web.apps.WebConfig',
+    'ckeditor'
     
 ]
 

@@ -6,6 +6,7 @@ from .fields import OrderField
 from django.utils.text import slugify
 from django.template.loader import render_to_string
 from django.urls import reverse
+from ckeditor.fields import RichTextField
 
 
 class Subject(models.Model):
@@ -135,3 +136,16 @@ class Image(ItemBase):
 
 class Video(ItemBase):
     url = models.URLField()
+
+
+
+
+class Broadcast(models.Model):
+    subject = models.CharField(max_length=150)
+    message = RichTextField()
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, limit_choices_to={'is_staff': True})
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.subject
