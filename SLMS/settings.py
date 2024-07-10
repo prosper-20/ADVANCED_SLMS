@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-
+from decouple import config
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -194,4 +194,3 @@ LOGIN_URL = "web-login"
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
 
 
-DEFAULT_USER_MAIL = "edwardprosper001@gmail.com"

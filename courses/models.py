@@ -7,6 +7,7 @@ from django.utils.text import slugify
 from django.template.loader import render_to_string
 from django.urls import reverse
 from decouple import config
+from django.shortcuts import get_object_or_404
 
 
 class Subject(models.Model):
@@ -51,6 +52,12 @@ class Course(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     mode = models.CharField(default="Physical", choices=COURSE_MODE_CHOICES, max_length=30)
     duration = models.TextField(default="12 weeks")
+
+    def get_students_enrolled(course_slug):
+        course = get_object_or_404(Course, slug=course_slug)
+        students = course.students.all()
+        return students
+
 
     class Meta:
         ordering = ['-created']
@@ -154,7 +161,8 @@ class Broadcast(models.Model):
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
         # Send broadcast message to all students in the course
-        students = self.course.student_set.all()
+        course_slug = self.course.slug
+        students = self.course.get_students_enrolled(course_slug)
         for student in students:
             # Implement your notification or messaging mechanism here
             # For example, sending an email to each student
@@ -162,10 +170,25 @@ class Broadcast(models.Model):
             self.send_notification_to_student(student)
 
     def send_notification_to_student(self, student):
-        # Implement your notification method here, e.g., sending an email
-        # Example implementation using Django's EmailMessage:
-        from django.core.mail import send_mail
-        subject = f"New Broadcast: {self.subject}"
-        message = f"Dear {student.username},\n\n{self.message}\n\nSincerely,\nThe Administration"
-        sender_email = config('DEFAULT_USER_MAIL')
-        send_mail(subject, message, 'from@example.com', [student.email])
+        # # Implement your notification method here, e.g., sending an email
+        # # Example implementation using Django's EmailMessage:
+        # from django.core.mail import send_mail
+        # subject = f"New Broadcast: {self.subject}"
+        # message = f"Dear {student.username},\n\n{self.message}\n\nSincerely,\nThe Administration"
+        # sender_email = config('EMAIL_HOST_USER')
+        # send_mail(subject, message, sender_email, [student.email])
+
+
+        import mailtrap as mt
+
+        # create mail object
+        mail = mt.Mail(
+            sender=mt.Address(email="mailtrap@example.com", name="Mailtrap Test"),
+            to=[mt.Address(email=student.email)],
+            subject="New Broadcast!",
+            text=self.message,
+        )
+
+        # create client and send
+        client = mt.MailtrapClient(token=config("MAILTRAP_TOKEN"))
+        client.send(mail)
