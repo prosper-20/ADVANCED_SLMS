@@ -10,6 +10,8 @@ from django.contrib.auth import get_user_model
 from .models import Post, Newsletter, Category
 from django.db.models import Count
 from django.contrib.auth.mixins import LoginRequiredMixin
+from courses.forms import BroadCastForm
+
 
 User = get_user_model()
 
@@ -168,6 +170,7 @@ class BlogDetailPage(View):
         categories_with_counts = Category.objects.annotate(post_count=Count('post'))
         return render(request, "web/blog_single.html", {"post": post, "other_posts": other_posts, "categories_with_counts": categories_with_counts})
     
+
 
 
 # class NewsletterView(View):

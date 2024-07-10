@@ -6,7 +6,7 @@ from .models import Course, Enrollment
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic.base import TemplateResponseMixin, View
-from .forms import ModuleFormSet, EnrollmentForm
+from .forms import ModuleFormSet, EnrollmentForm, BroadCastForm
 from django.forms.models import modelform_factory
 from django.apps import apps
 from .models import Module, Content
@@ -247,3 +247,25 @@ class CourseDetailView(DetailView):
         context['enroll_form'] = CourseEnrollForm(
         initial={'course':self.object})
         return context
+    
+from .forms import BroadCastForm
+
+class BroadsCastView(View):
+    def post(self, request):
+        form = BroadCastForm(request.POST)
+        if form.is_valid():
+                # Create a new Broadcast instance but don't save it yet
+            new_broadcast = form.save(commit=False)
+                
+                # Set the creator based on the logged-in user
+            new_broadcast.creator = request.user
+                
+                # Save the instance with the creator assigned
+            new_broadcast.save()
+                
+            return redirect('broadcast_list')  # Redirect to a success page or list view
+        else:
+            form = BroadCastForm()
+        
+        return render(request, 'web/create_broadcast.html', {'form': form})
+
