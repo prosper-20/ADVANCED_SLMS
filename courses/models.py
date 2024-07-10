@@ -8,7 +8,7 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 from decouple import config
 from django.shortcuts import get_object_or_404
-from django.core.validators import FileExtensionValidator, MaxFileSizeValidator
+from django.core.validators import FileExtensionValidator
 from .validator import validate_file_size
 
 

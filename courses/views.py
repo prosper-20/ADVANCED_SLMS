@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
-from .models import Course, Enrollment
+from .models import Course, Enrollment, CourseMaterials
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic.base import TemplateResponseMixin, View
@@ -273,4 +273,27 @@ def BroadCastView(request):
     
     return render(request, 'web/create_broadcast.html', {'form': form})
 
+
+
+from .forms import CourseMaterialsForm
+
+class CourseMaterialsCreateView(CreateView):
+    model = CourseMaterials
+    form_class = CourseMaterialsForm
+    template_name = 'web/create_course_material.html'  # Create this template
+
+    def form_valid(self, form):
+        # Get the course based on the slug in the URL
+        course = get_object_or_404(Course, slug=self.kwargs['slug'])
+        form.instance.course = course
+        return super().form_valid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['course_slug'] = self.kwargs['slug']
+        return context
+
+    def get_success_url(self):
+        slug = self.kwargs['slug']
+        return f'/web/courses/{slug}' 
 

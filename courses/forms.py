@@ -20,6 +20,14 @@ class BroadCastForm(forms.ModelForm):
         model = Broadcast
         fields = ["course", "subject", "message"]
 
+from .models import CourseMaterials
+
+class CourseMaterialsForm(forms.ModelForm):
+    class Meta:
+        model = CourseMaterials
+        fields = ['title', 'description', 'file']
+
+
 
 
 
