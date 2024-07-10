@@ -251,7 +251,7 @@ class CourseDetailView(DetailView):
 from .forms import BroadCastForm
 
 class BroadCastView(View):
-    def post(self, request, course_slug):
+    def post(self, request):
         form = BroadCastForm(request.POST)
         if form.is_valid():
                 # Create a new Broadcast instance but don't save it yet
