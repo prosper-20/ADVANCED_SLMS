@@ -250,22 +250,25 @@ class CourseDetailView(DetailView):
     
 from .forms import BroadCastForm
 
-class BroadCastView(View):
-    def post(self, request):
+from django.shortcuts import render, redirect
+
+def BroadCastView(request):
+    if request.method == 'POST':
         form = BroadCastForm(request.POST)
         if form.is_valid():
-                # Create a new Broadcast instance but don't save it yet
+            # Create a new Broadcast instance but don't save it yet
             new_broadcast = form.save(commit=False)
-                
-                # Set the creator based on the logged-in user
+            
+            # Set the creator based on the logged-in user
             new_broadcast.creator = request.user
-                
-                # Save the instance with the creator assigned
+            
+            # Save the instance with the creator assigned
             new_broadcast.save()
-                
+            
             return redirect('broadcast_list')  # Redirect to a success page or list view
-        else:
-            form = BroadCastForm()
-        
-        return render(request, 'web/create_broadcast.html', {'form': form})
+    else:
+        form = BroadCastForm()
+    
+    return render(request, 'web/create_broadcast.html', {'form': form})
+
 
