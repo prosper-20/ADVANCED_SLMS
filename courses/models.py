@@ -8,6 +8,8 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 from decouple import config
 from django.shortcuts import get_object_or_404
+from django.core.validators import FileExtensionValidator, MaxFileSizeValidator
+from .validator import validate_file_size
 
 
 class Subject(models.Model):
@@ -81,6 +83,24 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class CourseMaterials(models.Model):
+    course = models.ForeignKey(Course, related_name='course_materials', on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    file = models.FileField(upload_to="course_materials", validators=[
+        FileExtensionValidator(allowed_extensions=['pdf', 'doc', 'docx']),  # Example allowed file extensions
+         validate_file_size,  # 5 MB limit (in bytes)
+    ])
+    url = models.URLField(blank=True, null=True)
+    uploaded_at = models.DateTimeField(auto_now_add=True)
+
+
+    def __str__(self):
+        return self.title
+    
+
     
 
 class Enrollment(models.Model):
