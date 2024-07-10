@@ -192,3 +192,6 @@ from django.urls import reverse_lazy
 
 LOGIN_URL = "web-login"
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
+
+
+DEFAULT_USER_MAIL = "edwardprosper001@gmail.com"

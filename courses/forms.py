@@ -18,7 +18,7 @@ class EnrollmentForm(forms.ModelForm):
 class BroadCastForm(forms.ModelForm):
     class Meta:
         model = Broadcast
-        fields = "__all__"
+        fields = ["course", "subject", "message"]
 
 
 
