@@ -49,7 +49,6 @@ INSTALLED_APPS = [
     'redisboard',
     'books.apps.BooksConfig',
     'web.apps.WebConfig',
-    'ckeditor'
     
 ]
 
