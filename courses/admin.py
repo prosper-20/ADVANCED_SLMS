@@ -1,5 +1,10 @@
 from django.contrib import admin
-from .models import Subject, Course, Module, Enrollment
+from .models import Subject, Course, Module, Enrollment, CourseMaterials
+
+@admin.register(CourseMaterials)
+class CourseMaterials(admin.ModelAdmin):
+    list_display = ('course', 'title', 'file')
+
 
 @admin.register(Enrollment)
 class EnrollmentAdmin(admin.ModelAdmin):
