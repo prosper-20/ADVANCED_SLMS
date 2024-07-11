@@ -5,10 +5,11 @@
           <div class="media-body">
             <div class="article-metadata">
               <a class="mr-2" href="#">{{ course.semester }}</a>
-              <small class="text-muted">{{ post.date_posted }}</small>
+              <small class="text-muted margin-right"><strong>{{ course.code }}</strong></small>
             </div>
             <h2><a class="article-title" href="#">{{ course.title }}</a></h2>
-            <p class="article-content">{{ course.subject }}</p>
+            <p class="article-content">{{ course.subject }}</p> <a href="{% url 'course-material-create' course.slug %}">Create Material</a> 
+            <a href="{% url 'broadcast' %}">Send Message</a>
           </div>
         </article>
     {% endfor %}
