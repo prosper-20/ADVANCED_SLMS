@@ -228,6 +228,7 @@
 										</div>
 
 										<br>
+										{% if user != course.owner %}
 										<div class="tab_panel_section">
 											<div class="tab_panel_subtitle">Ready to Join?</div>
 											<div class="tab_panel_text">
@@ -238,6 +239,21 @@
 												<!-- <p>Click here to enroll <input type="submit">Enroll Now</p> -->
 											</div>
 										</div>
+										{% else %}
+										<div class="tab_panel_section">
+											<!-- <div class="tab_panel_subtitle">Ready to Join?</div> -->
+											<div class="tab_panel_text">
+												<a class="btn btn-primary btn-sm" href="{% url 'broadcast' %}">Broadcast Message</a>
+			
+												<a class="btn btn-primary btn-sm" href="{% url 'course-material-create' course.slug %}">Upload Materials</a>
+												<!-- <form action="" method="post">
+													{% csrf_token %}
+													<input class="btn btn-primary" type="submit" name="Enroll" id="" value="Enroll Now">
+												</form> -->
+												<!-- <p>Click here to enroll <input type="submit">Enroll Now</p> -->
+											</div>
+										</div>
+										{% endif %}
 										<div class="tab_panel_faq">
 											<div class="tab_panel_title">FAQ</div>
 
