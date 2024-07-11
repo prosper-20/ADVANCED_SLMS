@@ -302,7 +302,7 @@ class CourseMaterialsCreateView(CreateView):
 class LecturerCourseManagementView(View):
     def get(self, request):
         lecturer = request.user
-        courses = Course.objects.filter(onwer=lecturer)
+        courses = Course.objects.filter(owner=lecturer)
         return render(request, 'web/course_management.html', {'courses': courses})
 
 
