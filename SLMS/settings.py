@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'redisboard',
     'books.apps.BooksConfig',
     'web.apps.WebConfig',
+    'crispy_forms'
     
 ]
 
@@ -192,5 +193,9 @@ from django.urls import reverse_lazy
 
 LOGIN_URL = "web-login"
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
+
+
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 

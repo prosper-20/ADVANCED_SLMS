@@ -1,38 +1,10 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8" />
-<title>{% block title %}SLMS | Create BroadCast{% endblock %}</title>
-<link href="{% static 'courses/css/base.css' %}" rel="stylesheet">
-</head>
-<body>
-<div id="header">
-<a href="/" class="logo">Education</a>
-<ul class="menu">
-{% if request.user.is_authenticated %}
-<li><a href="{% url 'logout' %}">Sign out</a></li>
-{% else %}
-<li><a href="{% url 'login' %}">Sign in</a></li>
-{% endif %}
-</ul>
-</div>
-<div id="content">
-    <body>
-        <h2>Create a new Broadcast</h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Create Broadcast</button>
+{% extends 'web/web_base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <h2>Create a new Broadcast</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="bth btn-primary" type="submit">Create Broadcast</button>
         </form>
-    </body>
-</div>
-<script>
-document.addEventListener('DOMContentLoaded', (event) => {
-// DOM loaded
-{% block domready %}
-{% endblock %}
-})
-</script>
-</body>
-</html>
+{% endblock content %}
