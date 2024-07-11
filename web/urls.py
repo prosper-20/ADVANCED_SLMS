@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomePage, CoursesPage, AboutUsPage,  CourseDetailPage, BlogPage, BlogDetailPage, LoginPage,SignUpPage, StaffLoginPage, StaffSignUpPage
+from .views import HomePage, LecturerCourseManagementView, CoursesPage, AboutUsPage,  CourseDetailPage, BlogPage, BlogDetailPage, LoginPage,SignUpPage, StaffLoginPage, StaffSignUpPage
 from courses.views import BroadCastView, CourseMaterialsCreateView
 
 

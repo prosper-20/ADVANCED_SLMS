@@ -297,4 +297,12 @@ class CourseMaterialsCreateView(CreateView):
     def get_success_url(self):
         slug = self.kwargs['slug']
         return f'/web/courses/{slug}' 
+    
+
+class LecturerCourseManagementView(View):
+    def get(self, request):
+        lecturer = request.user
+        courses = Course.objects.filter(onwer=lecturer)
+        return render(request, 'web/course_management.html', {'courses': courses})
+
 
