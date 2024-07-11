@@ -1,11 +1,16 @@
 {% extends "web/web_base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 <div id="content">
     <body>
         <h2>Create Course Material</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.non_field_errors }}
+    {{ form.title.errors }}
+    {{ form.description.errors }}
+    {{ form.file.errors }}
+    {{ form|crispy }}
     <input type="hidden" name="course_slug" value="{{ course_slug }}">
     <button type="submit">Submit</button>
 </form>
