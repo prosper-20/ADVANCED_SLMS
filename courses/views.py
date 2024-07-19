@@ -15,8 +15,11 @@ from django.db.models import Count
 from .models import Subject
 from django.core.cache import cache
 from students.forms import CourseEnrollForm
+from django.contrib.auth import get_user_model
 from django.views.generic.detail import DetailView
 from django.contrib.auth.decorators import login_required
+
+User = get_user_model()
 # class ManageCourseListView(ListView):
 #     model = Course
 #     template_name = 'courses/manage/course/list.html'
@@ -304,6 +307,8 @@ class LecturerCourseManagementView(View):
         lecturer = request.user
         courses = Course.objects.filter(owner=lecturer)
         return render(request, 'web/course_management.html', {'courses': courses})
+    
+
 
 @login_required
 def RetrieveEnrolledCourses(request):
