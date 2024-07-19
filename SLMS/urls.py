@@ -31,6 +31,7 @@ urlpatterns = [
     path('students/', include('students.urls')),
     path("api/", include("api.urls")),
     path('course/', include('courses.urls')),
+    path('chat/', include('chat.urls', namespace='chat')),
     path('auth/', include('djoser.urls.jwt')),
     path('__debug__/', include('debug_toolbar.urls')),
 ]

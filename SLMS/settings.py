@@ -49,7 +49,9 @@ INSTALLED_APPS = [
     'redisboard',
     'books.apps.BooksConfig',
     'web.apps.WebConfig',
-    'crispy_forms'
+    'crispy_forms',
+    'chat',
+    'channels',
     
 ]
 
