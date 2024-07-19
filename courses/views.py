@@ -305,4 +305,11 @@ class LecturerCourseManagementView(View):
         courses = Course.objects.filter(owner=lecturer)
         return render(request, 'web/course_management.html', {'courses': courses})
 
+@login_required
+def RetrieveEnrolledCourses(request):
+    user = request.user
+    courses = Course.objects.all()
+    subjects = Subject.objects.all()
+    enrolled_courses = Enrollment.objects.filter(student=user)
+    return render(request, 'web/enrolled_courses.html', {'enrolled_courses': enrolled_courses, "courses": courses, "subjects": subjects})
 
