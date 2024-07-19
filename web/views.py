@@ -27,10 +27,15 @@ class StaffLoginPage(View):
 
         if user is not None:
             auth.login(request, user)
-            return redirect(reverse('web-home'))
+            return redirect(reverse('web-staff-courses'))
         else:
             messages.info(request, "Invalid username/password")
             return redirect(reverse('web-login'))
+        
+
+def LecturerManageCoursePage(request):
+    courses = Course.objects.filter(owner=request.user)
+    return render(request, "web/lecturer_manage_course.html", {"courses": courses})
 
 class LoginPage(View):
     def get(self, request):
