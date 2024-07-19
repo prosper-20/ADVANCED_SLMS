@@ -20,7 +20,12 @@ class EnrollmentForm(forms.ModelForm):
 class BroadCastForm(forms.ModelForm):
     class Meta:
         model = Broadcast
-        fields = ["course", "subject", "message"]
+        fields = ["subject", "message"]
+
+    # def __init__(self, *args, **kwargs):
+    #     super(BroadCastForm, self).__init__(*args, **kwargs)
+    #     self.fields['course'].widget = forms.HiddenInput()
+
 
 from .models import CourseMaterials
 

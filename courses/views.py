@@ -255,20 +255,24 @@ from .forms import BroadCastForm
 
 from django.shortcuts import render, redirect
 
-def BroadCastView(request):
+def BroadCastView(request, course_slug):
+     
+    course = get_object_or_404(Course, slug=course_slug)
     if request.method == 'POST':
         form = BroadCastForm(request.POST)
         if form.is_valid():
             # Create a new Broadcast instance but don't save it yet
             new_broadcast = form.save(commit=False)
+            new_broadcast.course = course
             
             # Set the creator based on the logged-in user
             new_broadcast.creator = request.user
             
+            
             # Save the instance with the creator assigned
             new_broadcast.save()
-            course_slug = get_object_or_404(Course, title=form.cleaned_data.get('course')).slug
-            print(course_slug)
+            # course_slug = get_object_or_404(Course, title=form.cleaned_data.get('course')).slug
+            # print(course_slug)
             
             return redirect(reverse('course-detail', kwargs={'slug': course_slug}))  # Redirect to a success page or list view
     else:
