@@ -99,6 +99,9 @@ REST_FRAMEWORK = {
 from datetime import timedelta
 
 
+ASGI_APPLICATION = 'SLMS.asgi.application'
+
+
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
@@ -185,6 +188,16 @@ CACHES = {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         }
     }
+}
+
+
+CHANNEL_LAYERS = {
+'default': {
+'BACKEND': 'channels_redis.core.RedisChannelLayer',
+'CONFIG': {
+'hosts': [('127.0.0.1', 6379)],
+},
+},
 }
 
 
