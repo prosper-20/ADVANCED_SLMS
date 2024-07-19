@@ -310,6 +310,6 @@ def RetrieveEnrolledCourses(request):
     user = request.user
     courses = Course.objects.all()
     subjects = Subject.objects.all()
-    enrolled_courses = Enrollment.objects.filter(student=user)
-    return render(request, 'web/enrolled_courses.html', {'enrolled_courses': enrolled_courses, "courses": courses, "subjects": subjects})
+    enrollments = Enrollment.objects.filter(student=user)
+    return render(request, 'web/enrolled_courses.html', {'enrollments': enrollments, "courses": courses, "subjects": subjects})
 

@@ -111,6 +111,8 @@ class Enrollment(models.Model):
     def __str__(self):
         return self.course.title
     
+    
+    
 
 
 class Module(models.Model):
