@@ -69,7 +69,7 @@ class Course(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            compound_slug = str(self.subject.title) + "-" + str(self.title)
+            compound_slug = str(self.title)
             self.slug = slugify(compound_slug)
         super().save(*args, **kwargs)
 

@@ -11,7 +11,7 @@ from .models import Post, Newsletter, Category
 from django.db.models import Count
 from django.contrib.auth.mixins import LoginRequiredMixin
 from courses.forms import BroadCastForm
-
+from books.views import search_book, full_book_details
 
 User = get_user_model()
 
@@ -155,6 +155,14 @@ class CourseDetailPage(LoginRequiredMixin, View):
             messages.success(request, "You have successfully enrolled for this course")
         return redirect(reverse('course-detail', kwargs={'slug': slug}))
         
+
+def get_book_recommendation(request, course_slug):
+    print(course_slug)
+    my_ids = search_book(course_slug)
+    my_full_book_details = full_book_details(my_ids)
+    print(my_full_book_details)
+    return render(request, 'web/book_recommendation.html', {'my_full_book_details': my_full_book_details})
+
 
 
 class AboutUsPage(View):
