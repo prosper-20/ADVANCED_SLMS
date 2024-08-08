@@ -214,3 +214,10 @@ LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 
+
+DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL")
+EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
+SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+SENDGRID_API_KEY = config("SENDGRID_API_KEY")
+
+

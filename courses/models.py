@@ -10,7 +10,10 @@ from decouple import config
 from django.shortcuts import get_object_or_404
 from django.core.validators import FileExtensionValidator
 from .validator import validate_file_size
-
+from django.template.loader import render_to_string
+from django.utils.encoding import smart_bytes
+from django.utils.html import strip_tags
+from django.core.mail import send_mail
 
 class Subject(models.Model):
     title = models.CharField(max_length=200)
@@ -207,16 +210,24 @@ class Broadcast(models.Model):
         # send_mail(subject, message, sender_email, [student.email])
 
 
-        import mailtrap as mt
+        # import mailtrap as mt
 
-        # create mail object
-        mail = mt.Mail(
-            sender=mt.Address(email="mailtrap@demomailtrap.com", name="Mailtrap Test"),
-            to=[mt.Address(email=student.email)],
-            subject=self.subject,
-            text=self.message,
-        )
+        # # create mail object
+        # mail = mt.Mail(
+        #     sender=mt.Address(email="mailtrap@demomailtrap.com", name="Mailtrap Test"),
+        #     to=[mt.Address(email=student.email)],
+        #     subject=self.subject,
+        #     text=self.message,
+        # )
 
-        # create client and send
-        client = mt.MailtrapClient(token=config("MAILTRAP_TOKEN"))
-        client.send(mail)
+        # # create client and send
+        # client = mt.MailtrapClient(token=config("MAILTRAP_TOKEN"))
+        # client.send(mail)
+
+        subject = self.subject
+        message = render_to_string('courses/course/email_notification.html', {"message": self.message})
+        plain_message = strip_tags(message)
+        recipients = [student.email]
+        send_mail(subject, plain_message, config('DEFAULT_FROM_EMAIL'), recipients)
+
+    
