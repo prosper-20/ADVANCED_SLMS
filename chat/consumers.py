@@ -11,7 +11,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
         self.id = self.scope['url_route']['kwargs']['course_id']
         self.room_group_name = f'chat_{self.id}'
         # join room group
-        await async_to_sync(self.channel_layer.group_add)(
+        await self.channel_layer.group_add(
         self.room_group_name,
         self.channel_name
         )

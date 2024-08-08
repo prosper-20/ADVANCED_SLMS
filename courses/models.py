@@ -212,7 +212,7 @@ class Broadcast(models.Model):
         mail = mt.Mail(
             sender=mt.Address(email="mailtrap@demomailtrap.com", name="Mailtrap Test"),
             to=[mt.Address(email=student.email)],
-            subject="New Broadcast!",
+            subject=self.subject,
             text=self.message,
         )
 
