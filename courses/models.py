@@ -54,6 +54,7 @@ class Course(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     mode = models.CharField(default="Physical", choices=COURSE_MODE_CHOICES, max_length=30)
     duration = models.TextField(default="12 weeks")
+    requirements = models.TextField(blank=True, null=True)
 
     # def get_students_enrolled(course_slug):
     #     course = get_object_or_404(Course, slug=course_slug)

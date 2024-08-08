@@ -220,10 +220,10 @@
 										<div class="tab_panel_section">
 											<div class="tab_panel_subtitle">Requirements</div>
 											<ul class="tab_panel_bullets">
-												<li>Lorem Ipsn gravida nibh vel velit auctor aliquet. Class aptent taciti sociosquad litora torquent.</li>
-												<li>Cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a.</li>
+												<li>{{ course.requirements }}</li>
+												<!-- <li>Cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a.</li>
 												<li>Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat.</li>
-												<li>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</li>
+												<li>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</li> -->
 											</ul>
 										</div>
 
@@ -236,8 +236,11 @@
 													{% csrf_token %}
 													<input class="btn btn-primary" type="submit" name="Enroll" id="" value="Enroll Now">
 												</form>
-												<a href="{% url 'get-book-recommendation' course.slug %}">Get Recommendations</a>
+												
 												<!-- <p>Click here to enroll <input type="submit">Enroll Now</p> -->
+											</div>
+											<div class="tab_panel_text">
+												<a class="btn btn-primary" href="{% url 'get-book-recommendation' course.slug %}">Get Recommendations</a>
 											</div>
 										</div>
 										<p><h5>
