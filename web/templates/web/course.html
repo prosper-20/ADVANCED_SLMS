@@ -236,6 +236,7 @@
 													{% csrf_token %}
 													<input class="btn btn-primary" type="submit" name="Enroll" id="" value="Enroll Now">
 												</form>
+												<a href="{% url 'get-book-recommendation' course.slug %}">Get Recommendations</a>
 												<!-- <p>Click here to enroll <input type="submit">Enroll Now</p> -->
 											</div>
 										</div>

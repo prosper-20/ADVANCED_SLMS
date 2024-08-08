@@ -2,22 +2,28 @@ from django.shortcuts import render
 import requests
 from decouple import config
 
-
-# url = f"https://api.bigbookapi.com/search-books?query=software-development-techniques&min-rating=0.8&api-key={config('BIG_BOOK_API_KEY')}"
+# id_list = []
+# url = f"https://api.bigbookapi.com/search-books?query=signals-and-systems&min-rating=0.8&api-key={config('USER_TWO_BIG_BOOK_API_KEY')}"
 # response = requests.get(url)
 # data = response.json()
-# print(data)
+# for book_list in data['books']:
+#     for book in book_list:
+#         # Extract the id and append to id_list
+#         id_list.append(book['id'])
+
+
+# print(id_list)
 
 def search_book(query):
     my_ids = []
-    search_url = f"https://api.bigbookapi.com/search-books?query={query}&min-rating=0.8&api-key={config('BIG_BOOK_API_KEY')}"
+    search_url = f"https://api.bigbookapi.com/search-books?query={query}&min-rating=0.8&api-key={config('USER_TWO_BIG_BOOK_API_KEY')}"
     response = requests.get(search_url)
     data = response.json()
-    ids = [book['id'] for book in data['books'][:3]]
-    print('ids', ids)
-    my_ids.extend(ids)
-    print(my_ids)
-    return my_ids #display only the first three book ids
+    for book_list in data['books']:
+        for book in book_list:
+        # Extract the id and append to id_list
+            my_ids.append(book['id'])
+    return my_ids[:3] #display only the first three book ids
 
 
 
@@ -25,7 +31,7 @@ def search_book(query):
 def full_book_details(book_ids):
     full_book_info = []
     for book_id in book_ids:
-        full_book_url = f"https://api.bigbookapi.com/{book_id}?api-key={config('BIG_BOOK_API_KEY')}"
+        full_book_url = f"https://api.bigbookapi.com/{book_id}?api-key={config('USER_TWO_BIG_BOOK_API_KEY')}"
         response = requests.get(full_book_url)
         full_book_info.append(response.json())
     # return full_book_info
