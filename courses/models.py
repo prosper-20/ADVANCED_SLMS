@@ -190,17 +190,17 @@ class Broadcast(models.Model):
     def __str__(self):
         return self.subject
     
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        # Send broadcast message to all students in the course
-        students = self.course.get_students_enrolled()
-        for student in students:
-            # Implement your notification or messaging mechanism here
-            # For example, sending an email to each student
-            # You might need to adjust this part based on your actual notification method
-            self.send_notification_to_student(student)
+    # def save(self, *args, **kwargs):
+    #     super().save(*args, **kwargs)
+    #     # Send broadcast message to all students in the course
+    #     students = self.course.get_students_enrolled()
+    #     for student in students:
+    #         # Implement your notification or messaging mechanism here
+    #         # For example, sending an email to each student
+    #         # You might need to adjust this part based on your actual notification method
+    #         self.send_notification_to_student(student)
 
-    def send_notification_to_student(self, student):
+    # def send_notification_to_student(self, student):
         # # Implement your notification method here, e.g., sending an email
         # # Example implementation using Django's EmailMessage:
         # from django.core.mail import send_mail
