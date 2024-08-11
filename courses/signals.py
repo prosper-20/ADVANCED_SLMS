@@ -20,13 +20,14 @@ from django.utils.html import strip_tags
 #         instance.creator = user
 
 
-@receiver(post_save, Broadcast)
-def send_broadcast_mails(sender, created, instance, **kwargs):
-    if created:
-        students = Broadcast.course.get_students_enrolled()
-        subject = 'New Order Placed'
-        message = render_to_string('buka/email_notification.html')
-        plain_message = strip_tags(message)
-        recipients = [student.email for student in students]
-        send_mail(subject, plain_message, config('DEFAULT_FROM_EMAIL_2'), recipients)
+# @receiver(post_save, Broadcast)
+# def send_broadcast_mails(sender, created, instance, **kwargs):
+#     if created:
+#         students = instance.course.get_students_enrolled()
+#         subject = f'{instance.subject}'
+#         user_message = instance.message
+#         message = render_to_string('courses/course/email_notification.html', {"user_message": user_message})
+#         plain_message = strip_tags(message)
+#         recipients = [student.email for student in students]
+#         send_mail(subject, plain_message, config('DEFAULT_FROM_EMAIL_2'), recipients)
         

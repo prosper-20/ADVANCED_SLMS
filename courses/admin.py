@@ -1,5 +1,8 @@
 from django.contrib import admin
-from .models import Subject, Course, Module, Enrollment, CourseMaterials
+from .models import Subject, Course, Module, Enrollment, CourseMaterials, Broadcast
+
+
+admin.site.register(Broadcast)
 
 @admin.register(CourseMaterials)
 class CourseMaterials(admin.ModelAdmin):

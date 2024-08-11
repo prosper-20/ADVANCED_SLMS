@@ -44,7 +44,7 @@ COURSE_MODE_CHOICES = (
 )
 
 class Course(models.Model):
-    owner = models.ForeignKey(User, related_name='courses_created', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='courses_created', on_delete=models.CASCADE, limit_choices_to={"is_lecturer":True})
     subject = models.ForeignKey(Subject, related_name='courses', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     code = models.CharField(max_length=100, blank=True, null=True)

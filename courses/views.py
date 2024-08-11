@@ -252,7 +252,12 @@ class CourseDetailView(DetailView):
         return context
     
 from .forms import BroadCastForm
-
+from decouple import config
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from django.utils.encoding import smart_bytes
+from django.utils.html import strip_tags
+from django.contrib import messages
 from django.shortcuts import render, redirect
 
 def BroadCastView(request, course_slug):
@@ -271,6 +276,14 @@ def BroadCastView(request, course_slug):
             
             # Save the instance with the creator assigned
             new_broadcast.save()
+            students = course.get_students_enrolled()
+            subject = form.cleaned_data.get("subject")
+            user_message = form.cleaned_data.get("message")
+            message = render_to_string('courses/course/email_notification.html', {"user_message": user_message, "course": course})
+            plain_message = strip_tags(message)
+            recipients = [student.email for student in students]
+            send_mail(subject, plain_message, config('DEFAULT_FROM_EMAIL'), recipients)
+            messages.success(request, "Broadcast sent successfully!")
             # course_slug = get_object_or_404(Course, title=form.cleaned_data.get('course')).slug
             # print(course_slug)
             

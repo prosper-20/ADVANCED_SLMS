@@ -9,7 +9,8 @@ from .managers import CustomUserManager
 TITLE = (
     ("Engr.", "Engr."),
     ("Prof.", "Prof"),
-    ("Dr.", "Dr.")
+    ("Dr.", "Dr."),
+    ("Student", "Student")
 )
 
 
@@ -23,7 +24,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     date_joined = models.DateTimeField(default=timezone.now)
 
     USERNAME_FIELD = "email"
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ["username"]
 
     objects = CustomUserManager()
 

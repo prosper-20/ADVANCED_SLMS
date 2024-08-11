@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notification</title>
+    
 </head>
 <body>
-    <p>{{ message }}</p>
+    <p>{{ user_message }}</p>
+
+    <P>From {{ course.owner.title }} {{ course.owner.username|title }}</P>
 </body>
 </html>
