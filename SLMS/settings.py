@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import redis
 from decouple import config
 import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -62,6 +63,11 @@ AUTH_USER_MODEL = "users.User"
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+# r = redis.from_url(config('REDIS_URL'))
+
+# r.set('key', 'redis-py')
+# r.get('key')
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',

@@ -25,6 +25,41 @@ def search_book(query):
             my_ids.append(book['id'])
     return my_ids[:3] #display only the first three book ids
 
+# print(search_book("circuits-and-systems"))
+
+
+
+# import requests
+# from decouple import config
+
+# def search_book(query):
+#     my_ids = []
+#     search_url = f"https://api.bigbookapi.com/search-books?query={query}&min-rating=0.8&api-key={config('USER_TWO_BIG_BOOK_API_KEY')}"
+#     response = requests.get(search_url)
+
+#     # Print the status code and response text for debugging
+#     print("Status Code:", response.status_code)
+#     print("Response Text:", response.text)
+
+#     try:
+#         data = response.json()
+#     except ValueError as e:
+#         print("Error decoding JSON:", e)
+#         return my_ids
+
+#     if 'books' not in data:
+#         print("Expected key 'books' not found in response.")
+#         return my_ids
+
+#     for book_list in data['books']:
+#         for book in book_list:
+#             # Extract the id and append to id_list
+#             my_ids.append(book['id'])
+    
+#     return my_ids[:3] # display only the first three book ids
+
+# print(search_book("circuits-and-systems"))
+
 
 
 
