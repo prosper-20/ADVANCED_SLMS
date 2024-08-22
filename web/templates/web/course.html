@@ -15,6 +15,14 @@
 <link rel="stylesheet" type="text/css" href="{% static 'web/plugins/OwlCarousel2-2.2.1/animate.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'web/styles/course.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'web/styles/course_responsive.css' %}">
+
+<!-- YOU JUST ADDED THIS -->
+<style>
+	#linkB {
+		display: none; /* Initially hide Link B */
+	}
+</style>
+
 </head>
 <body>
 
@@ -269,6 +277,24 @@
 											</div>
 										</div>
 										{% endif %}
+										
+											
+
+											<p><h5>
+												<a  href="https://prosper-django-bucket.s3.us-east-2.amazonaws.com/Learning+Path+for+Circuits+and+Systems+Course+1.pdf" id="linkA">
+												Generate Learning Path
+												</a>
+												</h5></p>
+
+												<p><h5>
+													<a id="linkB" href="https://prosper-django-bucket.s3.us-east-2.amazonaws.com/Alternative+Learning+Path+for+Circuits+and+Systems+Course+1.pdf">
+													Regenerate Learning Path
+													</a>
+													</h5></p>
+
+													<!-- <a href="#" id="linkA">Click me to reveal Link B</a>
+													<br>
+													<a href="https://www.example.com" id="linkB">Link B (appears after Link A is clicked)</a> -->
 										<div class="tab_panel_faq">
 											<div class="tab_panel_title">FAQ</div>
 
@@ -758,7 +784,13 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
 </div>
-
+<script>
+	// JavaScript to handle link visibility
+	document.getElementById('linkA').addEventListener('click', function(event) {
+		 // Prevent the default action of the link
+		document.getElementById('linkB').style.display = 'inline'; // Show Link B
+	});
+</script>
 <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/popper.js' %}"></script>
 <script src="{% static 'styles/bootstrap4/bootstrap.min.js' %}"></script>

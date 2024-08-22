@@ -723,7 +723,7 @@
 						<div class="news_post_large">
 							<div class="news_post_image"><img src="https://unilag.edu.ng/wp-content/uploads/2018/07/Untitled-2.jpg" alt=""></div>
 							<!-- <div class="news_post_image"><img src="{% static 'web/images/news_1.jpg' %}" alt=""></div> -->
-							<div class="news_post_large_title"><a href="blog_single.html">Unilag library begins its 24/7 Service to students</a></div>
+							<div class="news_post_large_title"><a href="https://unilag.edu.ng/?p=39753">Unilag library begins its 24/7 Service to students</a></div>
 							<div class="news_post_meta">
 								<ul>
 									<li><a href="#">admin</a></li>
@@ -733,7 +733,7 @@
 							<div class="news_post_text">
 								<p>Policy analysts generally agree on a need for reform, but not on which path policymakers should take. Can America learn anything from other nations...</p>
 							</div>
-							<div class="news_post_link"><a href="blog_single.html">read more</a></div>
+							<div class="news_post_link"><a href="https://unilag.edu.ng/?p=39753">read more</a></div>
 						</div>
 					</div>
 				</div>
@@ -744,7 +744,7 @@
 						<!-- News Posts Small -->
 						 {% for post in posts %}
 						<div class="news_post_small">
-							<div class="news_post_small_title"><a href="blog_single.html">{{ post.title }}</a></div>
+							<div class="news_post_small_title"><a href="{% url 'blog-detail' post.slug %}">{{ post.title }}</a></div>
 							<div class="news_post_meta">
 								<ul>
 									<li><a href="#">{{ post.content|truncatewords:10 }}</a></li>
